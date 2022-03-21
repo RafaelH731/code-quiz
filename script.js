@@ -1,72 +1,44 @@
 //Questions 
-var questions = [
-    {
-        question: "What does HTML stand for?",
-        answers: [
-            {text: "Hypertext Markup Language", correct: true},
-            {text: "Hypertext MakeUp Language", correct: false},
-            {text: "HomeText Machine Language", correct: false},
-            {text: "None of the above", correct: false}
-
-        ]
-    
-    },
-    {
-        question: "What does CCS stand for?",
-        answers: [
-            {text: "Cascading Style Sheets", correct: true},
-            {text: "Coliding Sheet Sorting", correct: false},
-            {text: "Constant Creative Sheets", correct: false},
-            {text: "None of the above", correct: false}
-
-        ]
-    
-    },
-    {
-        question: "What is the DOM?",
-        answers: [
-            {text: "Document object model", correct: true},
-            {text: "Dicipher on meeting", correct: false},
-            {text: "HomeText Machine Language", correct: false},
-            {text: "Drop Object Modulary", correct: false}
-
-        ]
-    
-    },
-    
-]
-
+var questionList = {
+    question: "What does HTML stand for?",
+    answers: ["Hypertext Markup Language", "Hypertext MakeUp Language", "HomeText Machine Language", "None of the above"]
+}
+   
 var questionEl = document.getElementById("question")
 var answerButtonsEl = document.getElementById("answer-buttons")
 var startButton = document.getElementById("start-btn")
 var questionContainerEl = document.getElementById("question-container")
 startButton.addEventListener("click", startQuiz)
 
-function startQuiz (){
+let currentQuestionIndex
+
+function startQuiz (questions){
 console.log("started")
-//hides start button after click
-startButton.classList.add("hide") 
-//shows questions after click on start
-questionContainerEl.classList.remove("hide") 
+showQuestion()
+showAnswers()
 }
 
-function showQuestion(question) {
-    questionEl.innerText = questions.question
+function showQuestion() {
+    //shows the question 
+    questionEl.innerText = questionList.question
+    
 }
 
-function startTimer(){
+ function showAnswers(){
+     //creates ul to show answers
+     let text = "<ul>";
+questionList.answers.forEach(myFunction);
+text += "</ul>";
+document.getElementById("answer-buttons").innerHTML = text;
 
+function myFunction(value) {
+  text += "<li>" + value + "</li>";
+ }
+ clickableAnswers()
 }
 
-function correctAnswers(){
-
+function clickableAnswers() {
+    answerButtonsEl.addEventListener("click", function(){
+        console.log("cliked")
+    })
 }
-
-function incorrectAnswers(){
-
-}
-
-function finalScore(){
-
-}
-
