@@ -22,7 +22,7 @@ var timerInterval // can call in another function to clear the timer
 
 var score = 0
 
-console.log(score)
+
 
 var timerEl = document.getElementById("timer")
 var questionEl = document.getElementById("question")

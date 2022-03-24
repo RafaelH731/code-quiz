@@ -8,6 +8,7 @@ JS will cycle through questions that are in an Object with arrays inside
 Timer is a funtion to countdown to 0
 Highscores will be saved in local storage
 
+
 ![Screenshot of Application](images/code-quiz-screenshot.png)
 
 Below is link to the Website
@@ -15,6 +16,10 @@ Below is link to the Website
 [Password Generator](https://rafaelh731.github.io/code-quiz/)
 
 
+ToDos
+Capture Score
+Loop to stop cycling questions and calculate score
+Local storage the score and names
 
 
 
