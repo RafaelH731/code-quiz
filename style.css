@@ -35,6 +35,12 @@ body {
     padding: 5px 20px;
 }
 
-li.answer {
+button.answer {
+    display:block;
+    margin: 1em auto;
     cursor: pointer;
 }
+
+/* .hide{
+    display:none;
+} */

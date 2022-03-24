@@ -16,8 +16,15 @@ var questionList = [{
 },
 ];
 
+var secondsLeft = 30;
+
+var timerInterval // can call in another function to clear the timer
+
 var score = 0
 
+console.log(score)
+
+var timerEl = document.getElementById("timer")
 var questionEl = document.getElementById("question")
 var answerButtonsEl = document.getElementById("answer-buttons")
 var startButton = document.getElementById("start-btn")
@@ -31,15 +38,13 @@ function startQuiz(questions) {
     console.log("started")
     showQuestion()
     showAnswers()
-    // for (var i=0; i < questionList.length; i++){
-    //     response = 
-    // }
+    startTime()
 }
 
 function showQuestion() {
     //shows the question 
     questionEl.innerText = questionList[currentQuestionIndex].question
-
+    //if statement to make a clear set interval and call a function to display result
 }
 
 function onAnswerClick(ev) {
@@ -47,9 +52,10 @@ function onAnswerClick(ev) {
     let answer = ev.srcElement.innerText;
     // compare answer with correct answer from array of questionlist above
     if(answer === questionList[currentQuestionIndex].correct) {
+        score++;
     }
     else {
-        console.log("BAD");
+        (questionList[currentQuestionIndex] != questionList[currentQuestionIndex].length--)
     }
     // answer is correct so move to next question and update screen
     currentQuestionIndex++;
@@ -62,17 +68,49 @@ function showAnswers() {
     document.getElementById("answer-buttons").innerHTML = "";
 
     //creates ul to show answers
-    let questionContainer = document.createElement("ul");
+    let questionContainer = document.createElement("div");
     questionList[currentQuestionIndex].answers.forEach(myFunction);
     document.getElementById("answer-buttons").appendChild(questionContainer);
 
     function myFunction(value) {
-        let option = document.createElement("li");
+        let option = document.createElement("button");
         option.className = "answer";
         option.innerText = value;
         option.addEventListener("click", onAnswerClick);
         questionContainer.appendChild(option);
     }
     answerButtonsEl.addEventListener("click", showQuestion);
-    //  nextQuestion()
+    
 }
+
+
+function startTime(){
+     timerInterval = setInterval(function(){
+        secondsLeft--;
+        timerEl.textContent = secondsLeft
+        if(secondsLeft <= 0){
+            clearInterval(timerInterval);
+            //make a function to display score
+            sendMessage();
+        }
+    }, 1000)
+}
+
+function sendMessage() {
+    timerEl.textContent = "Time Up"
+}
+
+
+var highScores = JSON.parse(localStorage.getItem("highscores")) || [];
+
+//when the game is finished and you actually have a score
+let userScoreObject = {name: userName,score:score}
+
+
+
+//then do a for loop to write a table with all the scores, sorted by score number
+
+//then save the new score array
+
+highScores.push(userScoreObject)
+localStorage.setItem("highscores",JSON.stringify(highScores))
