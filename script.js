@@ -16,14 +16,14 @@ var questionList = [{
 },
 ];
 
-var secondsLeft = 30;
+var secondsLeft = 15;
 
 var timerInterval // can call in another function to clear the timer
 
 var score = 0
 
 
-
+var highscores = document.getElementById("highscores")
 var timerEl = document.getElementById("timer")
 var questionEl = document.getElementById("question")
 var answerButtonsEl = document.getElementById("answer-buttons")
@@ -55,7 +55,8 @@ function onAnswerClick(ev) {
         score++;
     }
     else {
-        (questionList[currentQuestionIndex] != questionList[currentQuestionIndex].length--)
+        timerEl - 5
+        // questionList[currentQuestionIndex] != questionList[currentQuestionIndex].length--
     }
     // answer is correct so move to next question and update screen
     currentQuestionIndex++;
@@ -98,6 +99,10 @@ function startTime(){
 
 function sendMessage() {
     timerEl.textContent = "Time Up"
+    highscores.textContent = score
+    if(timerEl == 0 ) {
+        prompt(userName)
+    }
 }
 
 
