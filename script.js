@@ -14,6 +14,16 @@ var questionList = [{
     answers: ["Dicipher on meeting", "Drop Object Modulary", "Document object model", "None of the above"],
     correct: "Document object model",
 },
+{
+    question: "Which means or in Javascript ?",
+    answers: ["X", "||", "!", "None of the above"],
+    correct: "||",
+},
+{
+    question: "Which one is NOT a primitive type in Javascript?",
+    answers: ["Sting", "Boolean", "Null", "Object"],
+    correct: "Object",
+},
 ];
 
 var secondsLeft = 15;
@@ -54,9 +64,9 @@ function onAnswerClick(ev) {
     if(answer === questionList[currentQuestionIndex].correct) {
         score++;
     }
-    else {
-        timerEl - 5
-        // questionList[currentQuestionIndex] != questionList[currentQuestionIndex].length--
+    else {//subtact time from timer (only one second tho :/)
+        secondsLeft--
+        
     }
     // answer is correct so move to next question and update screen
     currentQuestionIndex++;
