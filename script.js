@@ -26,12 +26,13 @@ var questionList = [{
 },
 ];
 
-var secondsLeft = 15;
+var secondsLeft = 30;
 
 var timerInterval // can call in another function to clear the timer
 
 var score = 0
 
+// var userScoreObject 
 
 var highscores = document.getElementById("highscores")
 var timerEl = document.getElementById("timer")
@@ -65,7 +66,7 @@ function onAnswerClick(ev) {
         score++;
     }
     else {//subtact time from timer (only one second tho :/)
-        secondsLeft--
+        secondsLeft -= 5
         
     }
     // answer is correct so move to next question and update screen
